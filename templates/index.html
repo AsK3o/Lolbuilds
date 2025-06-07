@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>LoL Build Optimizer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Optimiseur de Builds LoL</h1>
+        <form method="post">
+            <input type="text" name="champion" placeholder="Ton champion" required>
+            <input type="text" name="enemy" placeholder="Champion adverse" required>
+            <select name="role">
+                <option value="top">Top</option>
+                <option value="jungle">Jungle</option>
+                <option value="mid">Mid</option>
+                <option value="adc">ADC</option>
+                <option value="support">Support</option>
+            </select>
+            <button type="submit">Obtenir Build</button>
+        </form>
+
+        {% if build %}
+        <div class="build-result">
+            <h2>{{ build.title }}</h2>
+            <p><strong>Objets :</strong> {{ build.items | join(', ') }}</p>
+            <p><strong>Runes :</strong> {{ build.runes | join(', ') }}</p>
+            <p><strong>Ordre des sorts :</strong> {{ build.skills }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
